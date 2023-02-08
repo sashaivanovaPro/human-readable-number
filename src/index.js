@@ -38,7 +38,7 @@ module.exports = function toReadable (number) {
             a = code[7];
         } else if(natur == 8 ){
             a = code[8];
-        } else {
+        } else if(natur == 9 ){
             a = code[9];
         }
     return {a}
@@ -91,26 +91,26 @@ module.exports = function toReadable (number) {
 }());
 
   (function returnHundr () {
-    if (hundr == 1 && decim == 0 && natur == 0 ){
-            c = "one" + " " + y;
-        } else if(hundr == 2 ){
-            c = "two" + " " + y;
-        } else if(hundr == 3 ){
-            c = "three" + " " + y;
-        } else if(hundr == 4 ){
-            c = "four" + " " + y;
-        } else if(hundr == 5 ){
-            c = "five" + " " + y;
-        } else if(hundr == 6 ){
-            c = "six" + " " + y;
-        } else if(hundr == 7 ){
-            c = "seven" + " " + y;
-        } else if(hundr == 8 ){
-            c = "eight" + " " + y;
-        } else {
-            c = "nine" + " " + y;
-        }
-    return {c}
+    if (hundr == 1){
+        c = "one" + " " + y;
+    } else if(hundr == 2 ){
+        c = "two" + " " + y;
+    } else if(hundr == 3 ){
+        c = "three" + " " + y;
+    } else if(hundr == 4 ){
+        c = "four" + " " + y;
+    } else if(hundr == 5 ){
+        c = "five" + " " + y;
+    } else if(hundr == 6 ){
+        c = "six" + " " + y;
+    } else if(hundr == 7 ){
+        c = "seven" + " " + y;
+    } else if(hundr == 8 ){
+        c = "eight" + " " + y;
+    } else if (hundr == 9 ){
+        c = "nine" + " " + y;
+    }
+return {c}
 }());
 
 (function numero () {
@@ -118,7 +118,7 @@ module.exports = function toReadable (number) {
         return n = a
         } else if (length == 2 && decim == 1){
             n = x;
-        } else if (length == 2 && decim == 2 && natur == 0){
+        } else if (length == 2 && natur == 0){
             n = b;
         } else if (length == 2 && decim >= 2){
             n = b + " " + a;
@@ -130,6 +130,8 @@ module.exports = function toReadable (number) {
             n = c + " " + b;
         } else if (length == 3 && decim >= 2){
             n = c + " " + b + " " + a;
+        } else if (length == 3 && decim == 0){
+            n = c + " " + a;
         }
   return {n}
     }());
