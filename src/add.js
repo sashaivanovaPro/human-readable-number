@@ -1,22 +1,28 @@
-function toReadable (number) {
+module.exports = function toReadable (number) {
     const str = number.toPrecision();
     const length = str.length;
-    const natur = str.slice(-1);
-    const decim = str[str.length-2];
-    const hundr = str[str.length-3];
-    let a;
-    let b;
-    let c;
-    let x;
-  console.log(str);
-  console.log(length);
-  console.log(natur);
-  console.log(decim);
-  console.log(hundr);
+    const natur = str[-1];
+    const decim = str[-2];
+    const hundr = str[-3];
     let code = ["zero","one","two","three","four","five","six","seven", "eight", "nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety","hundred"];
-  if ( natur == 0 && decim == undefined){
-            a = code[0];
-        } else if ((natur == 1 && decim == undefined) || (natur ==1 && decim >= 2)){
+    if (length == 1 ){
+        return a
+        } else if (length == 2 && decim == 1){
+        return x;
+        } else if (length == 2 && decim >= 2){
+        return b + a;
+        } else if (length == 3 && decim == 1){
+        return c + x;
+        }else if (length == 3 && decim >= 2){
+            return c + b + a;
+        };
+}
+
+/* Natur
+
+if ( natur == 0 && decim == indefined){
+            a = (code[0]);
+        } else if ( natur == 1 && decim == undefined){
             a = code[1];
         } else if( natur == 2 && decim == undefined){
            a = code[2];
@@ -34,7 +40,11 @@ function toReadable (number) {
             a = code[8];
         } else if(natur == 9 && decim == undefined){
             a = code[9];
-        }else if ( natur == 0 && decim == 1){
+        }else {
+            return;
+        } */
+
+        if ( natur == 0 && decim == 1){
             x = (code[10]);
         } else if ( natur == 1 && decim == 1){
             x = code[11];
@@ -70,26 +80,8 @@ function toReadable (number) {
             b = code[26];
         } else if(decim == 9 ){
             b = code[27];
-        } else if(hundr ==1 && decim == 0 && natur == 0 ){
+        } else if(hundred ==1 && decim == 0 && natur == 0 ){
             y = code[28];
         }else {
             return;
         }
-    if (length == 1 ){
-        return a
-        } else if (length == 2 && decim == 1){
-        return x;
-        } else if (length == 2 && decim >= 2 && natur == 0){
-        return b;
-        } else if (length == 2 && decim >= 2 && natur >= 1 ){
-        return b + " " + a;
-        } else if (length == 3 && decim == 1){
-        return c + " " + x;
-        }else if (length == 3 && decim >= 2){
-            return c + " " + b + " " + a;
-        };
-
-
-}
-
-console.log(toReadable(31));
